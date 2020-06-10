@@ -85,7 +85,6 @@ class DoublyLinkedList:
         new_node = ListNode(value, None, None)
         self.length += 1
         if not self.tail and not self.head:
-            :
             self.head = new_node
             self.tail = new_node
         else:
@@ -98,31 +97,39 @@ class DoublyLinkedList:
     Returns the value of the removed Node."""
 
     def remove_from_tail(self):
-        if not self.tail:
-            if not self.head:
-                return None
-        else:
-            current = self.head
-            previous = None
-            while current.next is not None:
-                previous = current
-                current = current.next
-            previous = self.tail
-            previous.next = None
-            self.length -= 1
-            return current
+        value = self.tail.value
+        # delete tail from DLL
+        self.delete(self.tail)
+        return value
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
 
     def move_to_front(self, node):
-        current = self.head
+        if node is self.head:
+            return
+        value = node.value
+        if node is self.tail:
+            self.remove_from_tail()
+        else:
+            node.delete()
+            self.length -= 1
+            self.add_to_head(value)
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
 
     def move_to_end(self, node):
-        pass
+        if node is self.tail:
+            return
+        value = node.value
+        if node is self.head:
+            self.remove_from_head()
+            self.add_to_tail(value)
+        else:
+            node.delete()
+            self.length -= 1
+            self.add_to_tail(value)
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
@@ -157,6 +164,8 @@ class DoublyLinkedList:
         while current:
             if current.value > max_val:
                 max_val = current.value
+            current = current.next
+        return max_val
 
 
 dll = DoublyLinkedList()
@@ -170,5 +179,5 @@ print(dll.__len__())
 print(dll.head.value)
 print(dll.tail.value)
 x = dll.remove_from_tail()
-print(x.value)
+# print(x.value)
 print(dll.__len__())
