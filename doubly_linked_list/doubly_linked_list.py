@@ -51,8 +51,8 @@ class DoublyLinkedList:
     def __len__(self):
         return self.length
 
-    """Wraps the given value in a ListNode and inserts it 
-    as the new head of the list. Don't forget to handle 
+    """Wraps the given value in a ListNode and inserts it
+    as the new head of the list. Don't forget to handle
     the old head node's previous pointer accordingly."""
 
     def add_to_head(self, value):
@@ -62,6 +62,7 @@ class DoublyLinkedList:
         if not self.head and not self.tail:
             self.head = new_node
             self.tail = new_node
+            self.length = self.length + 1
         else:
             new_node.next = self.head
             self.head.prev = new_node
@@ -77,8 +78,8 @@ class DoublyLinkedList:
         self.delete(self.head)
         return value
 
-    """Wraps the given value in a ListNode and inserts it 
-    as the new tail of the list. Don't forget to handle 
+    """Wraps the given value in a ListNode and inserts it
+    as the new tail of the list. Don't forget to handle
     the old tail node's next pointer accordingly."""
 
     def add_to_tail(self, value):
@@ -92,7 +93,7 @@ class DoublyLinkedList:
             self.tail.next = new_node
             self.tail = new_node
 
-    """Removes the List's current tail node, making the 
+    """Removes the List's current tail node, making the
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
 
@@ -102,7 +103,7 @@ class DoublyLinkedList:
         self.delete(self.tail)
         return value
 
-    """Removes the input node from its current spot in the 
+    """Removes the input node from its current spot in the
     List and inserts it as the new head node of the List."""
 
     def move_to_front(self, node):
@@ -113,9 +114,11 @@ class DoublyLinkedList:
             self.remove_from_tail()
         else:
             node.delete()
-            self.length -= 1
+            self.length = 1
             self.add_to_head(value)
 
+        # self.add_to_head(node.value)
+        # self.delete(node)
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
 

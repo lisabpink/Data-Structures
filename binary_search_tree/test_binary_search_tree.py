@@ -14,7 +14,9 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst.insert(3)
         self.bst.insert(7)
         self.bst.insert(6)
+        # assert that this reference (left, right)is 3
         self.assertEqual(self.bst.left.right.value, 3)
+        # assert that this reference (right, left)is 6
         self.assertEqual(self.bst.right.left.value, 6)
 
     def test_handle_dupe_insert(self):
@@ -38,23 +40,29 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.assertEqual(self.bst.get_max(), 300)
 
     def test_for_each(self):
+        # python list in array
         arr = []
+        # arrow function/one line anoyn function () =>
         def cb(x): return arr.append(x)
 
+        # setup for test- random between 1-101
         v1 = random.randint(1, 101)
         v2 = random.randint(1, 101)
         v3 = random.randint(1, 101)
         v4 = random.randint(1, 101)
         v5 = random.randint(1, 101)
 
+        # setup for test
         self.bst.insert(v1)
         self.bst.insert(v2)
         self.bst.insert(v3)
         self.bst.insert(v4)
         self.bst.insert(v5)
 
+        # call callback function on each of these things
         self.bst.for_each(cb)
 
+        # tests start- is each one of these in the array
         self.assertTrue(5 in arr)
         self.assertTrue(v1 in arr)
         self.assertTrue(v2 in arr)
