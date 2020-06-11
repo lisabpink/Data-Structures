@@ -50,7 +50,6 @@ class BSTNode:
     # Return True if the tree contains the value
     # False if it does not
 
-
     def contains(self, target):
         # start out with a node that is 5, then insert 2, 7
         if self.value == target:
@@ -117,20 +116,49 @@ class BSTNode:
    # Print all the values in order from low to high
    # Hint:  Use a recursive, depth first traversal
 
-
         def in_order_print(self, node):
             pass
+    # lowest number is always the furthest to the left
 
+    # base case?
+    if node is None:
+        return
+     # if node is None?
+
+     # recursive case?
+     self.in_order_print(self.left)
+     
+     # build up your call stack to see what happens? 
+     # were trying to get all the way to the bottom before we print anything
+     
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
 
     def bft_print(self, node):
+        # queue and/or stack would work best here- USE QUEUE- around 20-25 lines of code
         pass
+    # *use queue
+                # start queue with root node
+                # if queue is filled up and then taken out- 
+                # #how will we know when we stop? what condition is it going to check?
+                # what if first thing we put in queue? no heads on BST- only nodes
+                # if queue is empyt- called size
+                
+    # *while loop that checks size of queue- not using recursion
+                # need somekind of pointer variable that updates at the begenning of each loop
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
         pass
+         # *use stack class 
+         # start stack with root node
+         
+         # *iterate whith while loop that checks stack size
+            # use a pointer variable
+        
+        
+        # why does queue work for BFT?
 
     # Stretch Goals -------------------------
     # Note: Research may be required
